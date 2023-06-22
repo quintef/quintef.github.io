@@ -11810,24 +11810,7 @@ html {
   left: 80%;
   animation: animate 15s linear infinite;
 }
-.box div{
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  background-color: transparent;
-  
-  border: 6px  solid rgba(255, 255, 255, 0.8);
-}
-.box div:nth-child(1){
-  top: 12%;
-  left: 42%;
-  animation: animate 10s linear infinite;
-}
-.box div:nth-child(2){
-  top: 70%;
-  left: 50%;
-  animation: animate 7s linear infinite;
-}
+
 
 @keyframes animate{
   0%{
