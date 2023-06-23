@@ -2842,7 +2842,7 @@ textarea.form-control-lg {
 }
 .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
   color: var(--bs-btn-active-color);
-  background-color: var(--bs-btn-active-bg);
+  /*background-color: var(--bs-btn-active-bg);*/
   border-color: var(--bs-btn-active-border-color);
 }
 .btn-check:checked + .btn:focus-visible, :not(.btn-check) + .btn:active:focus-visible, .btn:first-child:active:focus-visible, .btn.active:focus-visible, .btn.show:focus-visible {
@@ -4188,8 +4188,9 @@ textarea.form-control-lg {
   word-wrap: break-word;
   background-color: var(--bs-card-bg);
   background-clip: border-box;
-  border: var(--bs-card-border-width) solid var(--bs-card-border-color);
-  border-radius: var(--bs-card-border-radius);
+  border: 8px solid #14ffb1;
+  border-radius: 20px;
+
 }
 .card > hr {
   margin-right: 0;
@@ -4215,9 +4216,56 @@ textarea.form-control-lg {
 }
 
 .card-body {
+  
   flex: 1 1 auto;
   padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
   color: var(--bs-card-color);
+  
+}
+#card{
+  overflow: hidden;
+}
+#cbody{
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right:-100%;
+  position: absolute;
+  background-color: #0dcaf034;
+  backdrop-filter: blur(5px);
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 2s;
+
+}
+#card:hover #cbody{
+  right: 0;
+  transition: 0.5s;
+}
+
+#ctitle{
+  color: white;
+  text-transform: capitalize;
+  font-size: 200%;
+  font-weight: 500;
+}
+#csubtitle{
+  color: white;
+  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 300;
+}
+#cinfo{
+  color: white;
+  font-size: 16px;
+  line-height: 25px;
+  margin: 10px 0px;
+}
+#cbutton{
+  color: white;
+
 }
 
 .card-title {
@@ -4304,6 +4352,9 @@ textarea.form-control-lg {
 
 .card-group > .card {
   margin-bottom: var(--bs-card-group-margin);
+}
+.card-img{
+
 }
 @media (min-width: 576px) {
   .card-group {
@@ -7039,6 +7090,7 @@ textarea.form-control-lg {
 
 .d-flex {
   display: flex !important;
+  gap:10%;
 }
 
 .d-inline-flex {
@@ -11790,8 +11842,44 @@ html {
   left: 6%;
   animation: animate 5s linear infinite;
 }
-
-
+.box div:nth-child(4){
+  top: 20%;
+  left: 60%;
+  animation: animate 10s linear infinite;
+}
+.box div:nth-child(5){
+  top: 67%;
+  left: 60%;
+  animation: animate 8s linear infinite;
+}
+.box div:nth-child(6){
+  top: 80%;
+  left: 10%;
+  animation: animate 10s linear infinite;
+}
+.box div:nth-child(7){
+  top: 60%;
+  left: 80%;
+  animation: animate 15s linear infinite;
+}
+.box div{
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  
+  border: 6px  solid rgba(255, 255, 255, 0.8);
+}
+.box div:nth-child(1){
+  top: 12%;
+  left: 42%;
+  animation: animate 10s linear infinite;
+}
+.box div:nth-child(2){
+  top: 70%;
+  left: 50%;
+  animation: animate 7s linear infinite;
+}
 
 @keyframes animate{
   0%{
