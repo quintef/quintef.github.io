@@ -902,7 +902,7 @@ progress {
 
 .g-5,
 .gy-5 {
-  --bs-gutter-y: 3rem;
+  --bs-gutter-y: 15rem;
 }
 
 @media (min-width: 576px) {
@@ -4224,6 +4224,13 @@ textarea.form-control-lg {
 }
 #card{
   overflow: hidden;
+  height: 100%;
+}
+#cimage{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: 2s;
 }
 #cbody{
   height: 100%;
