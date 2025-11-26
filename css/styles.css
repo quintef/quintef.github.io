@@ -11858,12 +11858,6 @@ html {
   height: 100%;
   display: block;
 }
-
-@media (max-width: 767.98px) {
-  .particle-trail {
-    display: none;
-  }
-}
 .bg-gradient-primary-to-secondary {
   background: #1e30f3;
   background: linear-gradient(135deg, #14ffb1 0%, #e21e80 100%);

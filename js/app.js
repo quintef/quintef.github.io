@@ -94,9 +94,8 @@ function initParticleTrail() {
 
     const ctx = canvas.getContext('2d');
     const particles = [];
-    const particleCount = 40;
-    let animationFrameId;
-    let isEnabled = window.innerWidth >= 768;
+    const BASE_PARTICLE_COUNT = 40;
+    let animationFrameId = null;
 
     function setupCanvas() {
         const { width, height } = container.getBoundingClientRect();
@@ -106,9 +105,20 @@ function initParticleTrail() {
 
     function initParticles() {
         particles.length = 0;
-        for (let i = 0; i < particleCount; i++) {
+        const totalParticles = getParticleCount();
+        for (let i = 0; i < totalParticles; i++) {
             particles.push(createParticle());
         }
+    }
+
+    function getParticleCount() {
+        if (window.innerWidth < 480) {
+            return Math.round(BASE_PARTICLE_COUNT * 0.45);
+        }
+        if (window.innerWidth < 768) {
+            return Math.round(BASE_PARTICLE_COUNT * 0.7);
+        }
+        return BASE_PARTICLE_COUNT;
     }
 
     function createParticle() {
@@ -154,63 +164,51 @@ function initParticleTrail() {
     }
 
     function animate() {
-        const scrollFactor = Math.min(window.scrollY / (document.body.scrollHeight - window.innerHeight), 1);
+        const scrollableDistance = Math.max(document.body.scrollHeight - window.innerHeight, 1);
+        const scrollFactor = Math.min(window.scrollY / scrollableDistance, 1);
         drawParticles(scrollFactor);
         animationFrameId = requestAnimationFrame(animate);
     }
 
-    function enableParticles() {
-        if (isEnabled) {
-            return;
-        }
-        isEnabled = true;
+    function handleResize() {
+        stopAnimation();
         setupCanvas();
         initParticles();
-        animate();
-    }
-
-    function disableParticles() {
-        if (!isEnabled) {
-            return;
-        }
-        isEnabled = false;
-        cancelAnimationFrame(animationFrameId);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
-    function handleResize() {
-        const shouldEnable = window.innerWidth >= 768;
-        if (shouldEnable) {
-            setupCanvas();
-            initParticles();
-            if (!isEnabled) {
-                isEnabled = true;
-                animate();
-            }
-        } else {
-            disableParticles();
-        }
+        startAnimation();
     }
 
     function onVisibilityChange() {
         if (document.hidden) {
-            cancelAnimationFrame(animationFrameId);
-        } else if (isEnabled) {
-            animate();
+            stopAnimation();
+        } else {
+            startAnimation();
         }
+    }
+
+    function startAnimation() {
+        if (animationFrameId !== null) {
+            return;
+        }
+        animationFrameId = requestAnimationFrame(animate);
+    }
+
+    function stopAnimation() {
+        if (animationFrameId === null) {
+            return;
+        }
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
     setupCanvas();
     initParticles();
-
-    if (isEnabled) {
-        animate();
-    }
+    startAnimation();
 
     window.addEventListener('resize', handleResize);
     document.addEventListener('visibilitychange', onVisibilityChange);
     window.addEventListener('scroll', () => {
-        if (!isEnabled) {
+        if (animationFrameId === null) {
             return;
         }
         // scroll factor handled inside animate loop; this listener keeps wake lock active
