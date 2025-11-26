@@ -2,20 +2,26 @@
 
 .profile {
     position: relative;
-    height: 75vw;
-    width: 75vw;
+    height: 80vw;
+    width: 80vw;
     border-radius: 5vw;
-    margin-top: 5vw;
-    max-height: 40rem;
-    max-width: 40rem;
+    margin: 0 auto;
+    margin-top: 4vw;
+    max-height: 42rem;
+    max-width: 42rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 2.5rem);
 
     .profile-img {
-        height: 80vw;
-        max-height: 45rem;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: 100%;
+        position: relative;
+        object-fit: cover;
     }
 
     .dots-1 {
@@ -68,11 +74,11 @@
 
 @include media-breakpoint-up(sm) {
     .profile {
-        height: 60vw;
-        width: 60vw;
+        height: 65vw;
+        width: 65vw;
     
         .profile-img {
-            height: 65vw;
+            max-width: 95%;
         }
     
         .dots-1 {
@@ -99,11 +105,11 @@
 }
 @include media-breakpoint-up(md) {
     .profile {
-        height: 50vw;
-        width: 50vw;
+        height: 55vw;
+        width: 55vw;
     
         .profile-img {
-            height: 55vw;
+            max-width: 90%;
         }
     
         .dots-1 {
@@ -130,11 +136,11 @@
 }
 @include media-breakpoint-up(lg) {
     .profile {
-        height: 40vw;
-        width: 40vw;
+        height: 38vw;
+        width: 38vw;
     
         .profile-img {
-            height: 45vw;
+            max-width: 85%;
         }
     
         .dots-1 {
@@ -162,11 +168,11 @@
 
 @include media-breakpoint-up(xl) {
     .profile {
-        height: 35vw;
-        width: 35vw;
+        height: 32vw;
+        width: 32vw;
 
         .profile-img {
-            height: 40vw;
+            max-width: 80%;
         }
 
         .dots-1 {

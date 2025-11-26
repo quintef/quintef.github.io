@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class = "bg-dark">
+<html lang="en" data-theme="dark">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -20,6 +20,9 @@
         <link href="css/styles.css" rel="stylesheet"/>
     </head>
     <body class="wrapper d-flex flex-column h-100">
+        <div class="particle-trail" aria-hidden="true">
+            <canvas id="particleCanvas"></canvas>
+        </div>
         <main class="flex-shrink-0">
             <!-- Navigation-->
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark py-3">
@@ -34,120 +37,208 @@
                             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                             <li class="nav-item"><a class="nav-link" target= "_blank" href="https://github.com/quintef">GitHub</a></li>
                         </ul>
+                        <div class="ms-lg-4 mt-3 mt-lg-0">
+                            <button class="btn btn-outline-light btn-sm theme-toggle d-flex align-items-center gap-2" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
+                                <i class="bi bi-moon-stars-fill" aria-hidden="true"></i>
+                                <span class="theme-toggle__label">Dark</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </nav>
             <!-- Header-->
-            <header class="py-5 bg-dark">
-                <div class="container px-5 pb-5">
+            <header id="home" class="hero section-spacing bg-dark">
+                <div class="container px-4 px-lg-5">
                     <div class="row gx-5 align-items-center">
-                        <div class="col-xxl-5">
-                            <!-- Header text content-->
+                        <div class="col-xxl-5 col-xl-6">
                             <div class="text-center text-xxl-start">
-                                <div class="hidden badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase">Software Engineer</div></div>
-                                <div class="hidden fs-3 fw-light text-muted">Hi! My name is</div>
-                                <h1 class="hidden display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Fernando Quintero</span></h1>
-                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
-                                    <a class="hidden btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="#resume">Resume</a>
-                                    <a class="hidden btn btn-primary btn-lg px-5 py-3 fs-6 fw-bolder" href="#projects">Projects</a>
+                                <div class="badge bg-gradient-primary-to-secondary text-white mb-4">
+                                    <div class="text-uppercase">Senior Technical Analyst</div>
+                                </div>
+                                <h1 class="display-5 fw-bolder mb-4"><span class="text-gradient d-inline">Hi, I&#39;m Fernando.</span></h1>
+                                <p class="lead fw-light text-muted mb-4">
+                                    I am a Senior Technical Analyst supporting <br />The Woman&#39;s Hospital of Texas.<br />
+                                    I am seeking to leverage my skills into a Systems Engineer role.
+                                </p>
+                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start">
+                                    <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="#projects">Projects</a>
+                                    <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="#contact">Contact</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xxl-7">
-                            <!-- Header profile picture-->
-                            <div class="d-flex justify-content-center mt-5 mt-xxl-0">
-                                <div class="profile bg-gradient-primary-to-secondary" id="profile">
-                                    <!-- TIP: For best results, use a photo with a transparent background like the demo example below-->
-                                    <!-- Watch a tutorial on how to do this on YouTube (link)-->
-                                    <img class="profile-img" src="src/assets/profile.png" alt="..." id="profile" />
+                        <div class="col-xxl-7 col-xl-6 mt-5 mt-xxl-0">
+                            <div class="d-flex justify-content-center">
+                                <div class="profile bg-gradient-primary-to-secondary">
+                                    <img class="profile-img" src="assets/pfp.png" alt="Portrait of Fernando Quintero" />
+                                    <div class="dots-1" aria-hidden="true">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 191.6 1215.4" xml:space="preserve" role="presentation">
+                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
+                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,12801.6,289.7,12808.6,227.7,12788.6z" />
+                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262 C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z" />
+                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,11521.6,289.7,11528.6,227.7,11508.6z" />
+                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262 C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z" />
+                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,10241.6,289.7,10248.6,227.7,10228.6z" />
+                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z" />
+                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,8961.6,289.7,8968.6,227.7,8948.6z" />
+                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z" />
+                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,7681.6,289.7,7688.6,227.7,7668.6z" />
+                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z" />
+                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,6401.6,289.7,6408.6,227.7,6388.6z" />
+                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z" />
+                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,5121.6,289.7,5128.6,227.7,5108.6z" />
+                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z" />
+                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,3841.6,289.7,3848.6,227.7,3828.6z" />
+                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z" />
+                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,2561.6,289.7,2568.6,227.7,2548.6z" />
+                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z" />
+                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,1281.6,289.7,1288.6,227.7,1268.6z" />
+                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="dots-2" aria-hidden="true">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 191.6 1215.4" xml:space="preserve" role="presentation">
+                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
+                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,12801.6,289.7,12808.6,227.7,12788.6z" />
+                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262 C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z" />
+                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,11521.6,289.7,11528.6,227.7,11508.6z" />
+                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262 C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z" />
+                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,10241.6,289.7,10248.6,227.7,10228.6z" />
+                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z" />
+                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,8961.6,289.7,8968.6,227.7,8948.6z" />
+                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z" />
+                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,7681.6,289.7,7688.6,227.7,7668.6z" />
+                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z" />
+                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,6401.6,289.7,6408.6,227.7,6388.6z" />
+                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z" />
+                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,5121.6,289.7,5128.6,227.7,5108.6z" />
+                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z" />
+                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,3841.6,289.7,3848.6,227.7,3828.6z" />
+                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z" />
+                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,2561.6,289.7,2568.6,227.7,2548.6z" />
+                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z" />
+                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,1281.6,289.7,1288.6,227.7,1268.6z" />
+                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="dots-3" aria-hidden="true">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 191.6 1215.4" xml:space="preserve" role="presentation">
+                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
+                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,12801.6,289.7,12808.6,227.7,12788.6z" />
+                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262 C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z" />
+                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,11521.6,289.7,11528.6,227.7,11508.6z" />
+                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262 C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z" />
+                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,10241.6,289.7,10248.6,227.7,10228.6z" />
+                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z" />
+                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,8961.6,289.7,8968.6,227.7,8948.6z" />
+                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z" />
+                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,7681.6,289.7,7688.6,227.7,7668.6z" />
+                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z" />
+                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,6401.6,289.7,6408.6,227.7,6388.6z" />
+                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z" />
+                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,5121.6,289.7,5128.6,227.7,5108.6z" />
+                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z" />
+                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,3841.6,289.7,3848.6,227.7,3828.6z" />
+                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z" />
+                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,2561.6,289.7,2568.6,227.7,2548.6z" />
+                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z" />
+                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,1281.6,289.7,1288.6,227.7,1268.6z" />
+                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="dots-4" aria-hidden="true">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 191.6 1215.4" xml:space="preserve" role="presentation">
+                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
+                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,12801.6,289.7,12808.6,227.7,12788.6z" />
+                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262 C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z" />
+                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,11521.6,289.7,11528.6,227.7,11508.6z" />
+                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262 C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z" />
+                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,10241.6,289.7,10248.6,227.7,10228.6z" />
+                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z" />
+                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,8961.6,289.7,8968.6,227.7,8948.6z" />
+                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z" />
+                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,7681.6,289.7,7688.6,227.7,7668.6z" />
+                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z" />
+                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,6401.6,289.7,6408.6,227.7,6388.6z" />
+                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z" />
+                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,5121.6,289.7,5128.6,227.7,5108.6z" />
+                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z" />
+                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,3841.6,289.7,3848.6,227.7,3828.6z" />
+                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z" />
+                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,2561.6,289.7,2568.6,227.7,2548.6z" />
+                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z" />
+                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C383.7,1281.6,289.7,1288.6,227.7,1268.6z" />
+                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262 C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z" />
+                                            </g>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> 
-            </header>
-            <!-- About Section-->
-            
-            <section class="wrapper bg-dark py-5">
-                <div class="container px-5">
-                    <div class="row gx-5 justify-content-center">
-                        <div class="col-xxl-8">
-                            <div class="text-center my-5">
-                                <h2 class="hidden display-5 fw-bolder"><span class="text-gradient d-inline">About Me</span></h2>
-                                <p class="hidden lead fw-light mb-4">My name is Fernando, I am a new-grad Computer Scientist.</p>
-                                <p class="hidden text-muted">I am a Houston-based software engineer who specializes in Python. I studied at the University of St. Thomas where I earned by B.S. of Computer Science. </p>
-                                <div class="d-flex justify-content-center fs-2 gap-4">
-                                    <a target="_blank" rel="noopener noreferrer" class="text-gradient" href="#!"><i class="bi bi-linkedin"></i></a>
-                                    <a target="_blank" rel="noopener noreferrer" class="text-gradient" href="https://www.github.com/quintef"  ><i class="bi bi-github"></i></a>
-                                    
-                                </div>
-                                
-                            </div>
-                        </div>
-                        
-                    </div>
-                
-
                 </div>
-                
-            </section>
+            </header>
             
             <!-- Projects Section-->
-        <section class="py-5 bg-dark">
-            
-            <div class="container">
-                
-                <div class="text-center mb-5">
-                    <div id="projects" class = "bg-dark py-5"></div>
-                    <h1 class="hidden display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Projects</span></h1>
+        <section id="projects" class="projects-section section-spacing bg-dark">
+            <div class="container px-4 px-lg-5">
+                <div class="text-center section-heading">
+                    <h1 class="hidden display-5 fw-bolder mb-3"><span class="text-gradient d-inline">Projects</span></h1>
                 </div>
-                <div class="row gy-5 justify-content-center">
+                <div class="projects-grid row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 g-xl-5 justify-content-center">
                     <!-- Project Card 1-->
-                    <div class="col-sm-6">
-                        <div class = "card bg-dark overflow-hidden rounded-4 mb-5" id="card" >
-                            <img class="card-img" id = "cimage" src="assets/project1.jpeg" alt="..." />
-                            <div class="card-body"id = "cbody">
-                                <h1 class="card-title"id = "ctitle">lorem ipsum</h1>
-                                <p class = "card-sub-title"id = "csubtitle">lorem ipsum</p>
-                                <p class="card-info"id = "cinfo">lorem ipsum </p>
-                                <button class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder"id = "cbutton">button</button><br> 
+                    <div class="col d-flex">
+                        <div class="project-card card bg-dark overflow-hidden rounded-4 w-100 h-100">
+                            <img class="project-card__image card-img" src="assets/expanse.png" alt="Meditech Expanse project background" />
+                            <div class="project-card__overlay card-body">
+                                <h1 class="project-card__title card-title">Meditech Expanse</h1>
+                                <ul class="experience-list project-card__list">
+                                    <li>Assisted in the system-wide EHR migration project.</li>
+                                    <li>Replaced legacy devices to meet minimum hardware requirements.</li>
+                                    <li>Upgraded Windows endpoints to Windows 11.</li>
+                                    <li>Developed automation tools to streamline deployment tasks.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class = "card bg-dark overflow-hidden rounded-4 mb-5 "id="card">
-                            <img class="card-img" id = "cimage" src="assets/project1.jpeg" alt="..." />
-                            <div class="card-body "id = "cbody">
-                                <h1 class="card-title"id = "ctitle">lorem</h1>
-                                <p class = "card-sub-title"id = "csubtitle">lorem ipsum </p>
-                                <p class="card-info"id = "cinfo">lorem ipsum dolor</p>
-                                <button class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder"id = "cbutton">beep</button>
+                    <div class="col d-flex">
+                        <div class="project-card card bg-dark overflow-hidden rounded-4 w-100 h-100">
+                            <img class="project-card__image card-img" src="assets/montrose.jpg" alt="Montrose clinic deployment project background" />
+                            <div class="project-card__overlay card-body">
+                                <h1 class="project-card__title card-title">Apollo</h1>
+                                <ul class="experience-list project-card__list">
+                                    <li>Participated in the deployment of four new clinics.</li>
+                                    <li>Provided on-site overnight support throughout each go-live.</li>
+                                    <li>Coordinated execution with cross-functional teams and vendor partners.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class = "card bg-dark overflow-hidden rounded-4 mb-5 "id="card">
-                            <img class="card-img" id = "cimage" src="assets/project1.jpeg" alt="..." />
-                            <div class="card-body "id = "cbody">
-                                <h1 class="card-title"id = "ctitle">lorem ipsum</h1>
-                                <p class = "card-sub-title"id = "csubtitle">lorem</p>
-                                <p class="card-info"id = "cinfo">lorem ipsum</p>
-                                <button class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder"id = "cbutton">beep</button>
+                    <div class="col d-flex">
+                        <div class="project-card card bg-dark overflow-hidden rounded-4 w-100 h-100">
+                            <img class="project-card__image card-img" src="assets/ftr.jpg" alt="Facility Tech Refresh project background" />
+                            <div class="project-card__overlay card-body">
+                                <h1 class="project-card__title card-title">Facility Tech Refresh</h1>
+                                <ul class="experience-list project-card__list">
+                                    <li>Led the facility-wide technology refresh initiative.</li>
+                                    <li>Organized and managed vendors for imaging, staging, and deployment.</li>
+                                    <li>Ensured all devices met HCA security and configuration standards.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
         </section>
         
         <!-- page content-->
         
-        <section class="bg-dark py-5" >
+        <section id="resume" class="section-spacing bg-dark" >
         
-        <div class="container px-0 my-0 bg-dark">
-            <div class="text-center mb-5">
-                <div id="resume" class = "bg-dark py-5"></div>
+        <div class="container px-4 px-lg-5">
+            <div class="text-center section-heading">
                 <h1 class="hidden display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Resume</span></h1>
             </div>
             <div class="row gx-5 justify-content-center">
@@ -158,73 +249,106 @@
                             <h2 class="hidden text-primary fw-bolder mb-0">Experience</h2>
                             <!-- Download resume button-->
                             <!-- Note: Set the link href target to a PDF file within your project-->
-                            <a class="hidden btn btn-primary px-4 py-3" href="resume/quintero_fernando_6_23.pdf"download = "fernando_resume">
+                            <a class="hidden btn btn-primary px-4 py-3" href="resume/quintero_fernando_STA.pdf"download = "fernando_resume">
                                 <div class="hidden d-inline-block bi bi-download me-2"></div>
                                 Download Resume
                             </a>
                         </div>
                         <!-- Experience Card 1-->
-                        <div class="card shadow border-0 rounded-4 mb-5">
+                        <div class="card shadow border-0 rounded-4 mb-5 experience-card themed-card">
                             <div class="card-body p-5">
                                 <div class="row align-items-center gx-5">
                                     <div class="col text-center text-lg-start mb-4 mb-lg-0">
-                                        <div class="bg-light p-4 rounded-4">
-                                            <div class="text-primary fw-bolder mb-2">1/2022 - 12/2022</div>
-                                            <div class="small fw-bolder">Researcher</div>
-                                            <div class="small text-muted">National Science Foundation</div>
+                                        <div class="experience-card__meta p-4 rounded-4">
+                                            <div class="text-primary fw-bolder mb-2">12/2025 - Present</div>
+                                            <div class="small fw-bolder">Senior Technical Analyst</div>
+                                            <div class="small text-muted">The Woman's Hospital of Texas</div>
                                             <div class="small text-muted">Houston, TX</div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8"><div>
-                                        Research project funded by the NSF to develop a pipeline to automate genetics and proteomics analysis.<br>
-                                        • Developed innovative tools to study patterns of protein enrichment in a large dataset.<br>
-                                        • Developed a web application to visualize and analyze protein structures.<br>
-                                        • Conducted research on Machine Learning approaches to detect patters in the 3D protein structures.<br>
-                                        • Added functionality to explore ontologies and perform gene enrichment analysis.<br>
-                                        • Improve search performance by 10% using relational database technologies.<br>
-                                    </div></div>
+                                    <div class="col-lg-8">
+                                        <ul class="experience-list">
+                                            <li>Led key elements of the facility EHR migration (Expanse).</li>
+                                            <li>Oversaw a facility-wide refresh of computers and peripherals (FTR).</li>
+                                            <li>Coordinated technology setup for newly acquired freestanding emergency departments (Apollo).</li>
+                                            <li>Developed Python scripts to automate and accelerate daily workflows.</li>
+                                            <li>Provide hands-on support for moderate to complex enterprise inquiries.</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Experience Card 2-->
-                        <div class="card shadow border-0 rounded-4 mb-5">
+                        <div class="card shadow border-0 rounded-4 mb-5 experience-card themed-card">
                             <div class="card-body p-5">
                                 <div class="row align-items-center gx-5">
                                     <div class="col text-center text-lg-start mb-4 mb-lg-0">
-                                        <div class="bg-light p-4 rounded-4">
-                                            <div class="text-primary fw-bolder mb-2">2018 - 2021</div>
-                                            <div class="small fw-bolder">Computer Science Club VP</div>
-                                            <div class="small text-muted">University of St. Thomas</div>
+                                        <div class="experience-card__meta p-4 rounded-4">
+                                            <div class="text-primary fw-bolder mb-2">07/2023- 12/2025</div>
+                                            <div class="small fw-bolder">Technical Analyst II</div>
+                                            <div class="small text-muted">HCA Houston Medical Center</div>
                                             <div class="small text-muted">Houston, TX</div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8"><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laudantium, voluptatem quis repellendus eaque sit animi illo ipsam amet officiis corporis sed aliquam non voluptate corrupti excepturi maxime porro fuga.</div></div>
+                                    <div class="col-lg-8">
+                                        <ul class="experience-list">
+                                            <li>Led key elements of the facility EHR migration (Expanse).</li>
+                                            <li>Oversaw a facility-wide refresh of computers and peripherals (FTR).</li>
+                                            <li>Coordinated technology setup for newly acquired freestanding emergency departments (Apollo).</li>
+                                            <li>Developed Python nad Powershell scripts to automate and accelerate daily workflows.</li>
+                                            <li>Provided hands-on support for moderate to complex enterprise inquiries.</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </section>
                     <!-- Education Section-->
                     <section>
-                        <a id="education" class = "bg-dark py-5"></a>
+                        <a id="education" class="bg-dark py-5"></a>
                         <h2 class="hidden text-secondary fw-bolder mb-4">Education</h2>
                         <!-- Education Card 1-->
-                        <div class="card shadow border-0 rounded-4 mb-5">
+                        <div class="card shadow border-0 rounded-4 mb-5 themed-card experience-card">
                             <div class="card-body p-5">
-                                <div class="row align-items-center gx-5">
-                                    <div class="col text-center text-lg-start mb-4 mb-lg-0">
-                                        <div class="bg-light p-4 rounded-4">
-                                            <div class="text-secondary fw-bolder mb-2">2018 - 2022</div>
-                                            <div class="mb-2">
-                                                <div class="small fw-bolder">University of St. Thomas </div>
-                                                <div class="small text-muted">Houston, TX</div>
-                                            </div>
-                                            <div class="fst-italic">
-                                                <div class="small text-muted">Bachelor's</div>
-                                                <div class="small text-muted">Computer Science</div>
-                                            </div>
+                                <div class="row gx-5 gy-4 gy-lg-5 align-items-center">
+                                    <div class="col-lg-4">
+                                        <div class="experience-card__meta p-4 rounded-4 h-100 text-center text-lg-start">
+                                            <div class="text-primary fw-bolder mb-2">2018 - 2022</div>
+                                            <div class="h5 fw-bolder mb-1">B.S. in Computer Science</div>
+                                            <div class="small fw-bolder">University of St. Thomas</div>
+                                            <div class="small text-muted">Houston, TX</div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8"><div>Computer Science Club VP <br> Recipient of the Bill and Peggy Shiffick Scholarship</div></div>
+                                    <div class="col-lg-8">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-mortarboard"></i></div>
+                                            <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Academic Highlights</span></h3>
+                                        </div>
+                                        <ul class="experience-list">
+                                            <li>Computer Science Club Vice President; coordinated programming workshops and speaker series.</li>
+                                            <li>Recipient of the Bill and Peggy Shiffick Scholarship for academic excellence.</li>
+                                            <li>Focused coursework on systems design, network administration, and cloud infrastructure.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Certifications Card -->
+                        <div class="card shadow border-0 rounded-4 themed-card">
+                            <div class="card-body p-5">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-award"></i></div>
+                                    <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Certifications</span></h3>
+                                </div>
+                                <div class="row row-cols-1 g-4">
+                                    <div class="col">
+                                        <div class="bg-light rounded-4 p-4 h-100">
+                                            <div class="text-secondary fw-bolder mb-1">In Progress</div>
+                                            <div class="small fw-bolder">Security+</div>
+                                            <div class="small text-muted">CompTIA</div>
+                                            <div class="small text-muted fst-italic">Target completion: Q1 2026</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -234,7 +358,7 @@
                     <!-- Skills Section-->
                     <section>
                         <!-- Skillset Card-->
-                        <div class="card shadow border-0 rounded-4 mb-5">
+                        <div class="card shadow border-0 rounded-4 mb-5 themed-card">
                             <div class="card-body p-5">
                                 <!-- Professional skills list-->
                                 <div class="mb-5">
@@ -274,82 +398,60 @@
                         </div>
                     </section>
                     
-                    <section class="py-5 bg-dark">
-                        
-                        <div class="hidden container px-5">
-                            
-                            <!-- Contact form-->
-                            <div class="bg-dark rounded-4 py-5 px-4 px-md-5">
-                                <div class="text-center mb-5">
-                                    <div id="contact" class = "bg-dark py-5"></div>
-                                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
-                                    <h1 class="fw-bolder">Get in touch</h1>
-                                    <p class="lead fw-normal text-muted mb-0">Contact Me!</p>
-                                </div>
-                                <div class="row gx-5 justify-content-center">
-                                    <div class="col-lg-8 col-xl-6">
-                                        <!-- * * * * * * * * * * * * * * *-->
-                                        <!-- * * SB Forms Contact Form * *-->
-                                        <!-- * * * * * * * * * * * * * * *-->
-                                        <!-- This form is pre-integrated with SB Forms.-->
-                                        <!-- To make this form functional, sign up at-->
-                                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                                        <!-- to get an API token!-->
-                                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                                            <!-- Name input-->
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                                                <label for="name">Full name</label>
-                                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                                            </div>
-                                            <!-- Email address input-->
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                                <label for="email">Email address</label>
-                                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                                            </div>
-                                            <!-- Phone number input-->
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
-                                                <label for="phone">Phone number</label>
-                                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                                            </div>
-                                            <!-- Message input-->
-                                            <div class="form-floating mb-3">
-                                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                                <label for="message">Message</label>
-                                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                                            </div>
-                                            <!-- Submit success message-->
-                                            <!---->
-                                            <!-- This is what your users will see when the form-->
-                                            <!-- has successfully submitted-->
-                                            <div class="d-none" id="submitSuccessMessage">
-                                                <div class="text-center mb-3">
-                                                    <div class="fw-bolder">Form submission successful!</div>
-                                                    To activate this form, sign up at
-                                                    <br />
-                                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                                </div>
-                                            </div>
-                                            <!-- Submit error message-->
-                                            <!---->
-                                            <!-- This is what your users will see when there is-->
-                                            <!-- an error submitting the form-->
-                                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                                            <!-- Submit Button-->
-                                            <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
                 </div>
             </div>
         </div>
     </section>
+        
+        <section id="contact" class="section-spacing bg-dark">
+            <div class="container px-4 px-lg-5">
+                <div class="contact-panel rounded-4 py-5 px-4 px-md-5 hidden">
+                    <div class="text-center section-heading">
+                        <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+                        <h1 class="fw-bolder">Get in touch</h1>
+                        <p class="lead fw-normal text-muted mb-0">Contact Me!</p>
+                    </div>
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-8 col-xl-6">
+                            <form id="contactForm" class="needs-validation" action="https://formsubmit.co/quintef.romero@gmail.com" method="POST">
+                                <input type="hidden" name="_subject" value="New portfolio inquiry" />
+                                <input type="hidden" name="_template" value="table" />
+                                <input type="hidden" name="_captcha" value="false" />
+                                <input type="hidden" name="_next" value="https://quintef.github.io/#contact" />
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="name" name="name" type="text" placeholder="Enter your name..." required />
+                                    <label for="name">Full name</label>
+                                    <div class="invalid-feedback">A name is required.</div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" required />
+                                    <label for="email">Email address</label>
+                                    <div class="invalid-feedback">A valid email is required.</div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="phone" name="phone" type="tel" placeholder="(123) 456-7890" required />
+                                    <label for="phone">Phone number</label>
+                                    <div class="invalid-feedback">A phone number is required.</div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" id="message" name="message" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
+                                    <label for="message">Message</label>
+                                    <div class="invalid-feedback">A message is required.</div>
+                                </div>
+                                <div class="d-none" id="submitSuccessMessage">
+                                    <div class="text-center mb-3">
+                                        <div class="fw-bolder">Message sent!</div>
+                                        I'll be in touch shortly.
+                                    </div>
+                                </div>
+                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message. Please try again.</div></div>
+                                <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- Divider-->
         <div class="pb-5 bg-dark"></div>
         <!-- Skills Section-->
