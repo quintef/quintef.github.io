@@ -451,6 +451,11 @@ html[data-theme] .form-floating > textarea.form-control:not(:placeholder-shown) 
 :root[data-theme="light"] .navbar-dark .navbar-toggler-icon {
   filter: invert(1);
 }
+:root[data-theme="light"] .navbar.bg-dark {
+  background-color: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
 
 .theme-toggle {
   border-radius: 999px !important;
